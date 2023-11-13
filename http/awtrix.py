@@ -11,6 +11,10 @@ def api_status():
     r = requests.get(api + "loop")
     print(r.text)
 
+def api_reboot():
+    r = requests.get(api + "reboot")
+    print(r.text)
+
 def update_setting(setting, value):
     data = '{"' + setting + '": "' + str(value) + '"}'
     r = requests.post(api + 'settings', data=data)
