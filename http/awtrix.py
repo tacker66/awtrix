@@ -48,8 +48,10 @@ ICO_SUN     = 4973
 ICO_HEART   = 794
 ICO_BATTERY = 390
 
-def update_app(name, text, icon, save=False):
-    data = '{"icon": "' + str(icon) + '", "text": "' + text + '"'
+def update_app(name, text, icon=0, save=False):
+    data = '{"text": "' + text + '"'
+    if icon != 0:
+        data = data + ', "icon": "' + str(icon) + '"' 
     if save:
         data = data + ', "save": true'
     data = data + '}'
