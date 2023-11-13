@@ -11,6 +11,14 @@ def api_status():
     r = requests.get(api + "loop")
     print(r.text)
 
+def update_setting(setting, value):
+    data = '{"' + setting + '": "' + str(value) + '"}'
+    r = requests.post(api + 'settings', data=data)
+    print(r)
+
+update_setting("TEFF", 10)
+update_setting("UPPERCASE", "false")
+
 def indicator_on():
     r = requests.post(api + "indicator1", data='{"color": [255,0,0]}')
     print(r)
@@ -37,7 +45,7 @@ ICO_HEART   = 794
 ICO_BATTERY = 390
 
 def update_app(name, text, icon, save=False):
-    data = '{"icon": "' + str(icon) + '", "textCase": 2, "text": "' + text + '"'
+    data = '{"icon": "' + str(icon) + '", "text": "' + text + '"'
     if save:
         data = data + ', "save": true'
     data = data + '}'
